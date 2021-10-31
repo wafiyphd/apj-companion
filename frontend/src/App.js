@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <div className="container App py-5">
+      <div className="container py-5 min-vh-100">
         <div className="my-auto">
           <div id="header" className="row justify-content-center my-5">
             <div className="col-12 d-flex justify-content-center">
@@ -79,11 +79,11 @@ function App() {
               <form className="w-100" onSubmit={handleSubmit}>
                 <div className="row d-flex justify-content-center">
                   <div className="col-11 col-md-6">
-                    <div className="card card--inverted">
+                    <div className="card input-card">
                       <h2>Who are you looking for...?</h2>
                       <label className="input my-4">
                         <input
-                          className="input__field"
+                          className="input-field"
                           type="text"
                           name="inUsername"
                           onChange={handleChange}
@@ -92,7 +92,7 @@ function App() {
                           placeholder="e.g. apasajabrunei"
                           autoComplete="off"
                         />
-                        <span className="input__label">IG Username</span>
+                        <span className="input-label">IG Username</span>
                         <span className="form-error">
                           {errors.inUsername &&
                             touched.inUsername &&

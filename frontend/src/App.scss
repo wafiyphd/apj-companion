@@ -10,21 +10,6 @@ $red: #e74a54;
 $bg-black: #212121;
 $bg-gradient: linear-gradient(90deg, #ffffff 0%, #d7e1ec 74%);
 
-:root {
-  --color-light: white;
-  --color-dark: #212121;
-  --color-signal: #fab700;
-
-  --color-background: var(--color-light);
-  --color-text: var(--color-dark);
-  --color-accent: var(--color-signal);
-
-  --size-bezel: 0.5rem;
-  --size-radius: 4px;
-
-  line-height: 1.4;
-}
-
 body {
   margin: 0;
   font-family: $main-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -58,6 +43,18 @@ p {
   color: #182c4e;
 }
 
+small {
+  font-size: 14px;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 0px;
+}
+
 form label {
   font-family: $main-serif;
   font-size: 20px;
@@ -65,16 +62,11 @@ form label {
 
 footer {
   background: $bg-black;
-  //border-radius: 40px 40px 0 0;
   p {
     padding: 0;
     margin: 0;
     color: #fff;
   }
-}
-
-.form-group {
-  position: relative;
 }
 
 .form-error {
@@ -84,28 +76,6 @@ footer {
   position: absolute;
   right: 0;
   padding: 6px 0;
-}
-
-.form-control {
-  border-radius: 0;
-  padding: 16px 20px;
-  font-weight: 300;
-}
-
-.form-control:focus {
-  color: #212529;
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  outline: 0;
-  box-shadow: none;
-}
-
-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #e6e6e6;
-  border-radius: 0px;
 }
 
 .btn {
@@ -119,7 +89,7 @@ input {
 }
 
 .card {
-  background: var(--color-background);
+  background: $bg-black;
   padding: 40px 40px;
   border-radius: 20px;
   border: 3px solid #fff;
@@ -137,83 +107,48 @@ input {
 
 .input {
   position: relative;
-  &__label {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 12px 40px 10px 16px;
-    font-size: 14px;
-    margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * 0.5);
-    background: pink;
-    white-space: nowrap;
-    transform: translate(0, 0);
-    transform-origin: 0 0;
+  &-label {
     background: $bg-black;
-    transition: transform 120ms ease-in;
+    padding: 12px 40px 10px 16px;
+    margin: 10px 20px 10px 8px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.2;
     color: rgba(255, 255, 255, 0.5);
     font-family: $main-sans-serif;
     text-transform: uppercase;
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    transition: transform 120ms ease-in, font-size 100ms ease-in;
   }
-  &__field {
+  &-field {
+    padding: 16px 16px;
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 3px solid $teal;
+    border-radius: 12px;
     box-sizing: border-box;
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    display: block;
-    width: 100%;
-    border: 3px solid $teal;
-    padding: 16px 16px;
-    color: #fff;
-    background: transparent;
-    border-radius: var(--size-radius);
     font-size: 16px;
+    color: #fff;
 
     &:focus,
     &:not(:placeholder-shown) {
-      & + .input__label {
+      & + .input-label {
         transform: translate(0.25rem, -65%) scale(0.8);
         color: $teal;
         padding: 10px 20px 10px 16px;
         font-size: 18px;
       }
     }
-  }
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App {
-  min-height: 100vh;
-  color: white;
-}
-
-small {
-  font-size: 14px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 
