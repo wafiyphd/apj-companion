@@ -17,28 +17,28 @@ class FetchIG(Resource):
     args = parser.parse_args()
 
     print(args)
-    # note, the post req from frontend needs to match the strings here (e.g. 'type and 'message')
+    # the post request from the frontend needs to match the strings here (e.g. 'username')
 
     request_json = args['username']
-    # ret_status, ret_msg = ReturnData(request_type, request_json)
-    # currently just returning the req straight
     inUsername = request_json
 
     if inUsername:
         try:
-            message = "Requested IG username: {}".format(inUsername)
+            message = "{}".format(inUsername)
             L = Instaloader(dirname_pattern="frontend/public/ig",title_pattern=inUsername,save_metadata=False,compress_json=False,max_connection_attempts=1)
             profile = Profile.from_username(L.context, inUsername)
+            user_bio = profile.biography
             print(L.download_profile(inUsername,profile_pic_only=True))
             status = "success"
             
         except Exception as e:
             status = "fail"
+            user_bio = ""
             message = "An error has occured! {}".format(e)
             
     else:
       message = "No username received"
     
-    final_ret = {"status": status, "message": message}
+    final_ret = {"status": status, "message": message, "biography": user_bio }
 
     return final_ret

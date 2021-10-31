@@ -6,9 +6,22 @@ $main-serif: "DM Serif Text", serif;
 $main-sans-serif: "Poppins", sans-serif;
 
 $teal: #6bcdce;
+$teal-accent: #a3e0e0;
 $red: #e74a54;
+$navy-blue: #182c4e;
 $bg-black: #212121;
 $bg-gradient: linear-gradient(90deg, #ffffff 0%, #d7e1ec 74%);
+$button-gradient: linear-gradient(
+  90deg,
+  $teal,
+  $teal,
+  $teal-accent,
+  $teal-accent,
+  $teal-accent,
+  $teal,
+  $teal,
+  $teal
+);
 
 body {
   margin: 0;
@@ -35,12 +48,12 @@ h6,
 button,
 input[type="submit"] {
   font-family: $main-serif;
-  color: #182c4e;
+  color: $navy-blue;
 }
 
 p {
   font-size: 18px;
-  color: #182c4e;
+  color: $navy-blue;
 }
 
 small {
@@ -79,13 +92,19 @@ footer {
 }
 
 .btn {
-  background: #6bcdce;
+  background: $teal;
+  background-image: $button-gradient;
+  background-size: 300% 100%;
   color: $bg-black;
   font-size: 18px !important;
   margin-top: 12px;
   border-radius: 50px;
   padding: 12px 30px;
   width: 150px;
+  &:hover {
+    transition: all 0.3s ease-in-out 0s;
+    background-position: 100% 0px;
+  }
 }
 
 .card {
@@ -95,13 +114,19 @@ footer {
   border: 3px solid #fff;
   box-shadow: 0.5rem 0.5rem 0 $teal;
   background: $bg-black;
+
+  &-fetch {
+    box-shadow: 0.5rem 0.5rem 0 $navy-blue;
+  }
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  p {
     color: #fff;
+    padding: 0 20px;
   }
 }
 
@@ -157,14 +182,14 @@ footer {
   position: relative;
   width: 80px;
   height: 80px;
-  margin: 20px auto;
+  margin: 8px auto;
 }
 .lds-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 40px;
+  height: 40px;
   margin: 8px;
   border: 8px solid #fff;
   border-radius: 50%;

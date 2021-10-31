@@ -5,6 +5,7 @@ import { Formik } from "formik";
 
 function App() {
   const [getMessage, setMessage] = useState({});
+  const [getBiography, setBiography] = useState({});
   const [getURL, setURL] = useState({});
 
   useEffect(() => {}, []);
@@ -26,9 +27,10 @@ function App() {
             </div>
             <div className="col-12 text-center my-4">
               <p>
-                A <b>work in progress</b>. Fetch the profile picture of an
-                Instagram account by entering their username. Just enter the
-                username in the input field below and you are good to go!
+                A <b>work in progress</b>. Fetch the profile picture and
+                biography of an Instagram account by entering their username.
+                Just enter the username in the input field below and you are
+                good to go!
                 <br />
                 <br />
                 <small>Not for external use.</small>
@@ -56,15 +58,17 @@ function App() {
                     setMessage(response);
                     if (response.data.status === "success") {
                       setURL("/ig/" + values.inUsername + ".jpg");
+                      setBiography(response.data.biography);
                     } else {
                       setURL({});
+                      setBiography({});
                     }
                   })
                   .catch((error) => {
                     console.log(error);
                   });
                 setSubmitting(false);
-              }, 1200);
+              }, 2000);
             }}
           >
             {({
@@ -77,8 +81,8 @@ function App() {
               isSubmitting,
             }) => (
               <form className="w-100" onSubmit={handleSubmit}>
-                <div className="row d-flex justify-content-center">
-                  <div className="col-11 col-md-6">
+                <div className="row d-flex justify-content-center my-5">
+                  <div className="col-11 col-md-7">
                     <div className="card input-card">
                       <h2>Who are you looking for...?</h2>
                       <label className="input my-4">
@@ -119,22 +123,35 @@ function App() {
             )}
           </Formik>
 
-          <div className="row my-5">
-            <div className="col-12 text-center">
-              {getMessage.status === 200 ? (
-                <p>{getMessage.data.message}</p>
-              ) : (
-                <p>Fetch details goes here</p>
-              )}
-            </div>
-          </div>
-          <div className="row my-5">
-            <div className="col-12 text-center justify-content-center">
-              {Object.keys(getURL).length !== 0 && (
-                <>
-                  <img src={getURL} className="img-fluid" alt="logo" />
-                </>
-              )}
+          <div className="row my-5 justify-content-center">
+            <div className="col-12 col-md-5 card card-fetch">
+              <div className="row">
+                <div className="col-12 text-center mb-4">
+                  <h2>Fetch details</h2>
+                </div>
+                {Object.keys(getURL).length === 0 && (
+                  <div className="col-12 text-center my-5">
+                    <p>
+                      Nothing to see here yet, go ahead and fetch a username!
+                    </p>
+                  </div>
+                )}
+                {Object.keys(getURL).length !== 0 && (
+                  <div className="col-12 text-center justify-content-center">
+                    <img src={getURL} className="img-fluid" alt="logo" />
+                  </div>
+                )}
+                {getMessage.status === 200 && (
+                  <div className="col-12 text-center mt-4">
+                    <p>{getMessage.data.message}</p>
+                  </div>
+                )}
+                {Object.keys(getBiography).length !== 0 && (
+                  <div className="col-12 text-center justify-content-center">
+                    <p className="mb-4">{getBiography}</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
