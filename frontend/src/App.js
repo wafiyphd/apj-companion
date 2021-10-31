@@ -126,8 +126,8 @@ function App() {
             )}
           </Formik>
 
-          <div className="row my-5 justify-content-center">
-            <div className="col-11 col-md-5 card card-fetch">
+          <div className="row mt-5 mb-2 justify-content-center">
+            <div className="col-10 col-md-5 card card-fetch">
               <div className="row">
                 <div className="col-12 text-center mb-4">
                   <h2>Fetch details</h2>
