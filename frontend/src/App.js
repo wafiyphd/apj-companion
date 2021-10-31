@@ -49,11 +49,12 @@ function App() {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              const API_URL = process.env.REACT_APP_API_URL;
-              const FETCH_URL = API_URL + "/flask/ig";
+              //const API_URL = process.env.REACT_APP_API_URL;
+              //const FETCH_URL = API_URL + "/flask/ig";
+
               setTimeout(() => {
                 axios
-                  .post(FETCH_URL, {
+                  .post("https://apjc.herokuapp.com/flask/ig", {
                     username: values.inUsername,
                   })
                   .then((response) => {
