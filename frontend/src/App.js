@@ -2,6 +2,7 @@ import "./App.scss";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Formik } from "formik";
+import {} from "dotenv/config";
 
 function App() {
   const [getMessage, setMessage] = useState({});
@@ -48,13 +49,14 @@ function App() {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
+              const API_URL = process.env.REACT_APP_API_URL;
+              const FETCH_URL = API_URL + "/flask/ig";
               setTimeout(() => {
                 axios
-                  .post("http://localhost:5000/flask/ig", {
+                  .post(FETCH_URL, {
                     username: values.inUsername,
                   })
                   .then((response) => {
-                    console.log(response);
                     setMessage(response);
                     if (response.data.status === "success") {
                       setURL("/ig/" + values.inUsername + ".jpg");
