@@ -1,0 +1,255 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+$main-serif: "DM Serif Text", serif;
+$main-sans-serif: "Poppins", sans-serif;
+
+$teal: #6bcdce;
+$red: #e74a54;
+$bg-black: #212121;
+$bg-gradient: linear-gradient(90deg, #ffffff 0%, #d7e1ec 74%);
+
+:root {
+  --color-light: white;
+  --color-dark: #212121;
+  --color-signal: #fab700;
+
+  --color-background: var(--color-light);
+  --color-text: var(--color-dark);
+  --color-accent: var(--color-signal);
+
+  --size-bezel: 0.5rem;
+  --size-radius: 4px;
+
+  line-height: 1.4;
+}
+
+body {
+  margin: 0;
+  font-family: $main-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  background-image: $bg-gradient;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input[type="submit"] {
+  font-family: $main-serif;
+  color: #182c4e;
+}
+
+p {
+  font-size: 18px;
+  color: #182c4e;
+}
+
+form label {
+  font-family: $main-serif;
+  font-size: 20px;
+}
+
+footer {
+  background: $bg-black;
+  //border-radius: 40px 40px 0 0;
+  p {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+  }
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-error {
+  font-family: $main-sans-serif;
+  font-size: 13px;
+  color: $red;
+  position: absolute;
+  right: 0;
+  padding: 6px 0;
+}
+
+.form-control {
+  border-radius: 0;
+  padding: 16px 20px;
+  font-weight: 300;
+}
+
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  outline: 0;
+  box-shadow: none;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 0px;
+}
+
+.btn {
+  background: #6bcdce;
+  color: $bg-black;
+  font-size: 18px !important;
+  margin-top: 12px;
+  border-radius: 50px;
+  padding: 12px 30px;
+  width: 150px;
+}
+
+.card {
+  background: var(--color-background);
+  padding: 40px 40px;
+  border-radius: 20px;
+  border: 3px solid #fff;
+  box-shadow: 0.5rem 0.5rem 0 $teal;
+  background: $bg-black;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+  }
+}
+
+.input {
+  position: relative;
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 12px 40px 10px 16px;
+    font-size: 14px;
+    margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * 0.5);
+    background: pink;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    background: $bg-black;
+    transition: transform 120ms ease-in;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: $main-sans-serif;
+    text-transform: uppercase;
+  }
+  &__field {
+    box-sizing: border-box;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    border: 3px solid $teal;
+    padding: 16px 16px;
+    color: #fff;
+    background: transparent;
+    border-radius: var(--size-radius);
+    font-size: 16px;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      & + .input__label {
+        transform: translate(0.25rem, -65%) scale(0.8);
+        color: $teal;
+        padding: 10px 20px 10px 16px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App {
+  min-height: 100vh;
+  color: white;
+}
+
+small {
+  font-size: 14px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lds-ring {
+  display: block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 20px auto;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
