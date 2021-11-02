@@ -54,7 +54,7 @@ function App() {
 
               setTimeout(() => {
                 axios
-                  .post("https://apjc.herokuapp.com/flask/ig", {
+                  .post("https://apjc.wafiydev.com/flask/ig", {
                     username: values.inUsername,
                   })
                   .then((response) => {
