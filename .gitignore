@@ -81,4 +81,4 @@ apjc/
 ig/
 
 /frontend/public/session
-/frontend/build/session
+# /frontend/build/session

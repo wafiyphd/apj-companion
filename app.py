@@ -2,6 +2,7 @@ from flask import Flask, send_from_directory
 from flask_restful import Api, Resource, reqparse
 from backend.FetchIG import FetchIG
 from backend.CheckIG import CheckIG
+from backend.test import Test
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 api = Api(app)
@@ -16,3 +17,4 @@ def instaloaderSession():
 
 api.add_resource(FetchIG, '/flask/ig')
 api.add_resource(CheckIG, '/flask/check')
+api.add_resource(Test, '/flask/test')

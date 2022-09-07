@@ -1,6 +1,7 @@
 from flask_restful import Api, Resource, reqparse
 from flask import request
 from instaloader import Instaloader, Profile
+from pathlib import Path
 
 class FetchIG(Resource):
   def get(self):
@@ -13,6 +14,10 @@ class FetchIG(Resource):
     print(self)
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str)
+    current_dir = Path(__file__)
+    project_dir = [p for p in current_dir.parents if p.parts[-1]=='apj-companion'][0]
+    session_file = str(project_dir) + "\\frontend\\build\\session"
+    print(session_file)
 
     args = parser.parse_args()
 
@@ -26,7 +31,7 @@ class FetchIG(Resource):
         try:
             message = "{}".format(inUsername)
             L = Instaloader(dirname_pattern="frontend/build/ig",title_pattern=inUsername,save_metadata=False,compress_json=False,max_connection_attempts=1)
-            L.load_session_from_file('wafiyae', './frontend/build/session')
+            L.load_session_from_file('wafiyae', str(session_file))
             profile = Profile.from_username(L.context, inUsername)
             user_bio = profile.biography
             print(L.download_profile(inUsername,profile_pic_only=True))
