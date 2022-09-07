@@ -2,6 +2,7 @@ from flask_restful import Api, Resource, reqparse
 from flask import request
 from instaloader import Instaloader, Profile
 from pathlib import Path
+from os import environ
 
 class FetchIG(Resource):
   def get(self):
@@ -15,8 +16,11 @@ class FetchIG(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str)
     current_dir = Path(__file__)
-    project_dir = [p for p in current_dir.parents if p.parts[-1]=='app'][0]
-    session_file = str(project_dir) + "/frontend/build/session"
+    print(current_dir)
+    app_name = environ.get('APP_NAME')
+    session_file = environ.get('SESSION_FILE')
+    project_dir = [p for p in current_dir.parents if p.parts[-1]==app_name][0]
+    session_file = str(project_dir) + session_file
     print(session_file)
 
     args = parser.parse_args()
