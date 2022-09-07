@@ -51,10 +51,8 @@ function App() {
             onSubmit={(values, { setSubmitting }) => {
               //const API_URL = process.env.REACT_APP_API_URL;
               //const FETCH_URL = API_URL + "/flask/ig";
-
-              setTimeout(() => {
                 axios
-                  .post("https://apjc.wafiydev.com/flask/ig", {
+                  .post("/flask/ig", {
                     username: values.inUsername,
                   })
                   .then((response) => {
@@ -62,16 +60,16 @@ function App() {
                     if (response.data.status === "success") {
                       setURL("/ig/" + values.inUsername + ".jpg");
                       setBiography(response.data.biography);
+                      setSubmitting(false);
                     } else {
                       setURL({});
                       setBiography({});
+                      setSubmitting(false);
                     }
                   })
                   .catch((error) => {
                     console.log(error);
                   });
-                setSubmitting(false);
-              }, 2000);
             }}
           >
             {({
@@ -161,8 +159,7 @@ function App() {
       </div>
       <footer>
         <p className="py-4 text-center">
-          Copyright &copy; 2021. All Rights Reserved.
-          <br />A <b>Wafiy</b> Project.
+          Copyright &copy; 2022 <a href="https://wafiydev.com">Wafiy Dev</a>.<br/>All Rights Reserved.
         </p>
       </footer>
     </div>

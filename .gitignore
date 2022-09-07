@@ -79,3 +79,6 @@ typings/
 __pycache__/
 apjc/
 ig/
+
+/frontend/public/session
+/frontend/build/session

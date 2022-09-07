@@ -56,6 +56,11 @@ p {
   color: $navy-blue;
 }
 
+a {
+  color: $teal;
+  text-decoration: none;
+}
+
 small {
   font-size: 14px;
 }
@@ -79,6 +84,7 @@ footer {
     padding: 0;
     margin: 0;
     color: #fff;
+    font-size: 13px;
   }
 }
 
