@@ -26,7 +26,6 @@ class FetchIG(Resource):
         try:
             message = "{}".format(inUsername)
             L = Instaloader(dirname_pattern="frontend/build/ig",title_pattern=inUsername,save_metadata=False,compress_json=False,max_connection_attempts=1)
-            L.load_session_from_file('wafiyae')
             profile = Profile.from_username(L.context, inUsername)
             user_bio = profile.biography
             print(L.download_profile(inUsername,profile_pic_only=True))
