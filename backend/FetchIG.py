@@ -15,7 +15,7 @@ class FetchIG(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str)
     current_dir = Path(__file__)
-    project_dir = [p for p in current_dir.parents if p.parts[-1]=='apj-companion'][0]
+    project_dir = [p for p in current_dir.parents if p.parts[-1]=='app'][0]
     session_file = str(project_dir) + "\\frontend\\build\\session"
     print(session_file)
 
