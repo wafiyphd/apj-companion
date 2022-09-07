@@ -15,12 +15,17 @@ class FetchIG(Resource):
     print(self)
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str)
-    current_dir = Path(__file__)
-    print(current_dir)
+
     app_name = environ.get('APP_NAME')
-    session_file = environ.get('SESSION_FILE')
+    session_file_path = environ.get('SESSION_FILE')
+
+    current_dir = Path(__file__)
     project_dir = [p for p in current_dir.parents if p.parts[-1]==app_name][0]
-    session_file = str(project_dir) + session_file
+    session_file = str(project_dir) + session_file_path
+
+    print(app_name)
+    print(session_file_path)
+    print(current_dir)
     print(session_file)
 
     args = parser.parse_args()
