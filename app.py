@@ -10,5 +10,9 @@ api = Api(app)
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
+@app.route('/session')
+def instaloaderSession():
+    return send_from_directory(app.static_folder, 'session')
+
 api.add_resource(FetchIG, '/flask/ig')
 api.add_resource(CheckIG, '/flask/check')
