@@ -16,7 +16,7 @@ class FetchIG(Resource):
     parser.add_argument('username', type=str)
     current_dir = Path(__file__)
     project_dir = [p for p in current_dir.parents if p.parts[-1]=='app'][0]
-    session_file = str(project_dir) + "\\frontend\\build\\session"
+    session_file = str(project_dir) + "/frontend/build/session"
     print(session_file)
 
     args = parser.parse_args()
