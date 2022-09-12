@@ -1,6 +1,8 @@
 from flask_restful import Api, Resource, reqparse
 from flask import request
 from instaloader import Instaloader, Profile
+from pathlib import Path
+from os import environ
 
 class CheckIG(Resource):
   def get(self):
@@ -14,6 +16,18 @@ class CheckIG(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str)
 
+    app_name = environ.get('APP_NAME')
+    session_file_path = environ.get('SESSION_FILE')
+
+    current_dir = Path(__file__)
+    project_dir = [p for p in current_dir.parents if p.parts[-1]==app_name][0]
+    session_file = str(project_dir) + session_file_path
+
+    print(app_name)
+    print(session_file_path)
+    print(current_dir)
+    print(session_file)
+
     args = parser.parse_args()
 
     print(args)
@@ -25,6 +39,7 @@ class CheckIG(Resource):
     if inUsername:
         try:
             L = Instaloader(max_connection_attempts=1)
+            L.load_session_from_file('wafiyae', str(session_file))
             profile = Profile.from_username(L.context, inUsername)
             status = "Username exists"
             message = "The username {} is okay!".format(inUsername)
