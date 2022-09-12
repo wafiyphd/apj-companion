@@ -43,9 +43,11 @@ class CheckIG(Resource):
             profile = Profile.from_username(L.context, inUsername)
             status = "Username exists"
             message = "The username {} is okay!".format(inUsername)
+            print('{} exists'.format(inUsername))
         except Exception as e:
             status = "Does not exists"
             message = "The username {} does not exist.".format(inUsername)
+            print('An error has occured! {}'.format(e))
             
     else:
       message = "No username received"
